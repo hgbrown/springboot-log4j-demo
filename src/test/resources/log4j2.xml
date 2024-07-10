@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <File name="ErrorFileAppender" fileName="error.log">
+            <PatternLayout pattern="%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </File>
+
+        <File name="NoHupFileAppender" fileName="nohup.log">
+            <PatternLayout pattern="%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+            </Filters>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="OFF" additivity="false">
+            <AppenderRef ref="NoHupFileAppender"/>
+        </Logger>
+
+        <Logger name="org.apache" level="OFF" additivity="false">
+            <AppenderRef ref="NoHupFileAppender"/>
+        </Logger>
+
+        <Logger name="za.co" level="INFO" additivity="false">
+            <AppenderRef ref="ErrorFileAppender"/>
+            <AppenderRef ref="NoHupFileAppender"/>
+        </Logger>
+
+        <Root level="WARN">
+            <AppenderRef ref="ErrorFileAppender"/>
+            <AppenderRef ref="NoHupFileAppender"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
