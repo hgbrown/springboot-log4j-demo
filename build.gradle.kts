@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "za.co.vine"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 springBoot {
     buildInfo()
@@ -37,8 +37,6 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-log4j2:3.3.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.23.1")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.23.1")
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")

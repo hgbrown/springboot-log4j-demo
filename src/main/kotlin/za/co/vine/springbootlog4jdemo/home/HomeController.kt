@@ -22,7 +22,7 @@ class HomeController(
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun home(): String {
-        log.debug("Request to home at: ${LocalDateTime.now()}")
+        log.debug("Request to home at: {}", LocalDateTime.now())
         return """
             {
                 "build-version": "${buildProperties.version}",
